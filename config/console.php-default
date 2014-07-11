@@ -1,0 +1,28 @@
+<?php
+
+// This is the configuration for yiic console application.
+// Any writable CConsoleApplication properties can be configured here.
+return array(
+  'basePath'=>dirname(__FILE__).DIRECTORY_SEPARATOR.'..',
+  'name'=>'Db Migration',
+  // application components
+  'components'=>array(
+    'db'=>array(
+      'connectionString' => 'pgsql:host=localhost;dbname=mydbname',
+      'emulatePrepare' => true,
+      'username' => 'myuser',
+      'password' => 'mypass',
+      'charset' => 'utf8',
+    ),
+  ),
+  'commandMap'=>array(
+    'migrate'=>array(
+      'class'=>'application.cli.commands.AMigrateCommand',
+      'migrationPath'=>'application.migrations',
+      'migrationTable'=>'tbl_migration',
+      'connectionID'=>'db',
+      'templateFile'=>'application.migrations.template',
+      'templateExt'=>'phptpl',
+    )
+  ),
+);

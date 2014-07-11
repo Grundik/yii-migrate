@@ -1,0 +1,14 @@
+{
+  "name": "grundik/yii-migrate",
+  "description": "Simple stub to make database migrations with Yii migrations backend",
+  "keywords": [
+    "yii",
+    "migrate",
+    "dbmigrate"
+  ],
+  "license": "MIT",
+  "require": {
+    "yiisoft/yii": "2.*"
+  },
+  "bin": ["yiic"]
+}
