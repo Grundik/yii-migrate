@@ -1,12 +1,13 @@
 {
   "name": "grundik/yii-migrate",
-  "description": "Simple stub to make database migrations with Yii migrations backend",
+  "description": "Simple package to add database migrations to project",
+  "type": "library",
+  "license": "BSD",
   "keywords": [
     "yii",
     "migrate",
     "dbmigrate"
   ],
-  "license": "MIT",
   "require": {
     "yiisoft/yii": "2.*"
   },
