@@ -10,5 +10,5 @@
   "require": {
     "yiisoft/yii": ">1.1.6, <2.0"
   },
-  "bin": ["yiic"]
+  "bin": ["migrate", "migrate.bat"]
 }
