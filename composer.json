@@ -5,11 +5,10 @@
   "license": "BSD",
   "keywords": [
     "yii",
-    "migrate",
-    "dbmigrate"
+    "database-migration"
   ],
   "require": {
-    "yiisoft/yii": "2.*"
+    "yiisoft/yii": ">1.1.6, <2.0"
   },
   "bin": ["yiic"]
 }
