@@ -22,12 +22,12 @@ Installation
 * Run composer: composer update
 
 * Create configuration file:
-cp vendor/grundik/yii-migrate/config/migrations.php-default config/migrations.php
+    cp vendor/grundik/yii-migrate/config/migrations.php-default config/migrations.php
 
 * Edit configuration file to fulfill your needs: set database credentials, migrations path
 
 * Run
-** vendor/bin/migrate - to perform migrate;
-** vendor/bin/migrate create <name> - to create new migration.
+    * vendor/bin/migrate - to perform migrate;
+    * vendor/bin/migrate create <name> - to create new migration.
 
 See also: http://www.yiiframework.com/doc/guide/1.1/en/database.migration
