@@ -7,7 +7,7 @@ Installation
 ------------
 
 * Add to composer.json:
-
+    <code class="json"><pre>
     "require": {
         "grundik/yii-migrate": "*@dev"
     },
@@ -18,11 +18,12 @@ Installation
       "type": "vcs",
       "url": "https://github.com/yiisoft/yii.git"
     }]
+    </pre></code>
 
-* Run composer: composer update
+* Run composer: <pre>composer update</pre>
 
 * Create configuration file:
-    cp vendor/grundik/yii-migrate/config/migrations.php-default config/migrations.php
+    <pre>cp vendor/grundik/yii-migrate/config/migrations.php-default config/migrations.php</pre>
 
 * Edit configuration file to fulfill your needs: set database credentials, migrations path
 
