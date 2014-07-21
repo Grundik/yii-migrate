@@ -20,7 +20,7 @@ $loader->add('YiiMigrate\\', __DIR__);
 
 $config = @include($basepath . '/config/migration.php');
 if (!$config) {
-  throw new RuntimeException("Migration config in /config/migration.php not found, please use {$basepath}/config/migration.php-default to create one");
+  throw new RuntimeException("Migration config in {$basepath}/config/migration.php not found, please use {$currentpath}/config/migration.php-default to create one");
 }
 
 $config['commandMap'] = array(
