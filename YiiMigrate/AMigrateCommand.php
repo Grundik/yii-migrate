@@ -120,10 +120,15 @@ class AMigrateCommand extends \MigrateCommand {
   }
 
   protected function getNewMigrations() {
-    $migrations = parent::getNewMigrations();
+    if (!$this->module) {
+      $migrations = parent::getNewMigrations();
+    } else {
+      $migrations = array();
+    }
+    $module = $this->module ?: true;
 
     $applied=array();
-    foreach($this->getMigrationHistory(-1, true) as $version=>$time) {
+    foreach($this->getMigrationHistory(-1, $module) as $version=>$time) {
       if (preg_match('@^(.+:)m(\d{6}_\d{6})_@', $version, $matches)) {
         $applied[$matches[1].$matches[2]] = true;
       }
@@ -134,6 +139,20 @@ class AMigrateCommand extends \MigrateCommand {
         $migrations = array_merge($migrations, $this->_getModuleMigrations($module, $applied));
       }
     }
+    usort($migrations, function($a, $b){
+      if (preg_match('@m(\d{6}_\d{6})@', $a, $matches)) {
+        $a = $matches[1];
+      }
+      if (preg_match('@m(\d{6}_\d{6})@', $b, $matches)) {
+        $b = $matches[1];
+      }
+      if ($a<$b) {
+        return -1;
+      } elseif ($a>$b) {
+        return 1;
+      }
+      return 0;
+    });
     return $migrations;
   }
 }
