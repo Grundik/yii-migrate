@@ -13,5 +13,9 @@ return array(
       'password' => 'mypass',
       'charset' => 'utf8',
     ),
-  )
+  ),
+  'migrateModules' => array(
+    //'module' => 'relative.dotted..module.path'
+  ),
+
 );

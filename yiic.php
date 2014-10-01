@@ -43,7 +43,7 @@ defined('YII_DEBUG') || define('YII_DEBUG',true);
 require_once ($basepath . '/vendor/yiisoft/yii/framework/yii.php');
 $loader->setUseIncludePath($basepath.'/cli/commands');
 
-$app=Yii::createConsoleApplication($config);
+$app = Yii::createApplication('YiiMigrate\AConsoleApplication', $config);
 $app->commandRunner->addCommands($currentpath.'/cli/commands');
 
 array_splice($_SERVER['argv'], 1, 0, 'migrate');
