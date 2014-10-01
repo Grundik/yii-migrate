@@ -104,7 +104,6 @@ class AMigrateCommand extends \MigrateCommand {
     return parent::actionCreate($args);
   }
 
-
   protected function instantiateMigration($class) {
     if (preg_match('@^(.+):(.+)$@', $class, $matches)) {
       $class = $matches[2];
