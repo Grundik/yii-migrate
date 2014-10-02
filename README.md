@@ -32,3 +32,14 @@ Installation
     * vendor/bin/migrate create <name> - to create new migration.
 
 See also: http://www.yiiframework.com/doc/guide/1.1/en/database.migration
+
+Modules
+-------
+
+To use multiple migration folders (e.g. for multiple project modules), define them in migrations.php as explained in example config.
+
+Use parameter --module=<module_name> to perform action in explicit module:
+<pre>vendor/bin/migrate create migration_name --module=module_name</pre>
+Migrate without parameters will apply all new migrations from all modules.
+
+Module migrations are applied in order of their creation, regardless of module.
