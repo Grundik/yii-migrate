@@ -11,4 +11,8 @@
  * @license http://www.yiiframework.com/license/
  */
 
+$curpath = realpath(dirname(__FILE__));
+if (!file_exists($curpath.'/yiic.php')) {
+  $curpath = realpath($curpath.'/../grundik/yii-migrate/');
+}
 require_once(dirname(__FILE__).'/yiic.php');
