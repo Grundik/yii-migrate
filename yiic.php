@@ -36,12 +36,15 @@ $config['commandMap'] = array(
     'migrationPath' =>'application.migrations',
     'migrationTable'=>'tbl_migration',
     'connectionID' =>'db',
-    'templateFile' => $currentpath.'/migrations/template.phptpl', //'application.migrations.template',
+    'templateFile' => isset($config['templateFile'])
+                       ? $currentpath.'/migrations/template.phptpl'
+                       : $basepath.'/'.$config['templateFile'],
     //'templateExt'  => 'phptpl',
   )
 );
 $config['basePath'] = $basepath.'/'.(isset($config['migrationsPath'])?$config['migrationsPath']:'.');
 unset($config['migrationsPath']);
+unset($config['templateFile']);
 
 defined('STDIN') || define('STDIN', fopen('php://stdin', 'r'));
 

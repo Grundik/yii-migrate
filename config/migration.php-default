@@ -17,5 +17,5 @@ return array(
   'migrateModules' => array(
     //'module' => 'relative.dotted..module.path'
   ),
-
+  //'templateFile' => 'some/custom/path/relative/to/application/root'
 );
