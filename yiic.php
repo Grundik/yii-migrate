@@ -37,8 +37,8 @@ $config['commandMap'] = array(
     'migrationTable'=>'tbl_migration',
     'connectionID' =>'db',
     'templateFile' => isset($config['templateFile'])
-                       ? $currentpath.'/migrations/template.phptpl'
-                       : $basepath.'/'.$config['templateFile'],
+                       ? $basepath.'/'.$config['templateFile']
+                       : $currentpath.'/migrations/template.phptpl',
     //'templateExt'  => 'phptpl',
   )
 );
