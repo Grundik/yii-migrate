@@ -24,7 +24,12 @@ class AMigrateCommand extends \MigrateCommand {
       if ($path === false || !is_dir($path)) {
         echo 'Warning: The module migration directory does not exist: ' . $path . "\n";
       } else {
-        echo "Using module path: {$path}" . PHP_EOL;
+        if (!defined('BASE_PATH')) {
+          $shortPath = $path;
+        } else {
+          $shortPath = '...'.substr($path, strlen(BASE_PATH));
+        }
+        echo "Using module path: {$shortPath}" . PHP_EOL;
         $paths[$module] = $path;
       }
     }

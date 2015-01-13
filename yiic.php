@@ -12,6 +12,7 @@ if ($i) {
   $basepath = realpath($basepath);
   $loader = @include($basepath . '/vendor/autoload.php');
 }
+defined('BASE_PATH') || define('BASE_PATH', $basepath);
 
 if  (!$loader) {
   throw new RuntimeException('vendor/autoload.php could not be found. Did you run `php composer.phar install`?');
