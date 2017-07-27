@@ -41,6 +41,7 @@ $config['commandMap'] = array(
                        ? $basepath.'/'.$config['templateFile']
                        : $currentpath.'/migrations/template.phptpl',
     //'templateExt'  => 'phptpl',
+    //'epilogCommands' => null,
   )
 );
 $config['basePath'] = $basepath.'/'.(isset($config['migrationsPath'])?$config['migrationsPath']:'.');

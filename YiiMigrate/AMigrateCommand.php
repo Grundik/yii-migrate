@@ -8,6 +8,7 @@ class AMigrateCommand extends \MigrateCommand {
 
   public $moduleMigrationPaths = 'application.{module}.migrations';
   public $module = null;
+  public $epilogCommands;
 
   protected function getTemplate() {
     if ($this->templateFile !== null) {
@@ -42,6 +43,20 @@ class AMigrateCommand extends \MigrateCommand {
       $this->_initModuleMigrationPaths($app->migrateModules);
     }
     return parent::beforeAction($action, $params);
+  }
+
+  public function afterAction($action, $params, $exitCode = 0) {
+    $app = Yii::app();
+    if (isset($app->epilogCommands) && file_exists($app->epilogCommands)) {
+      $db = $this->getDbConnection();
+      $cmd = file_get_contents($app->epilogCommands);
+      if (false!==$cmd) {
+        echo "*** Applying epilog commands:\n$cmd\n";
+        $db->createCommand($cmd)->execute();
+        echo "*** Done\n\n";
+      }
+    }
+    return parent::afterAction($action, $params, $exitCode);
   }
 
   protected function _getModuleMigrations($module, array $applied) {

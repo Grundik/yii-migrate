@@ -17,5 +17,6 @@ return array(
   'migrateModules' => array(
     //'module' => 'relative.dotted..module.path'
   ),
-  //'templateFile' => 'some/custom/path/relative/to/application/root'
+  //'templateFile' => 'some/custom/path/relative/to/application/root',
+  //'epilogCommands' => realpath(__DIR__.'/epilog.sql'),
 );
