@@ -19,16 +19,33 @@ if  (!$loader) {
 }
 $loader->add('YiiMigrate\\', __DIR__);
 
-$env = getenv('YIIMIGRATE_ENV');
+$opts = getopt('c:e:', ['config:', 'environment:']);
+
+$env = null;
+if (isset($opts['e'])) {
+    $env = $opts['e'];
+} elseif (isset($opts['environment'])) {
+    $env = $opts['environment'];
+} else {
+    $env = getenv('YIIMIGRATE_ENV');
+}
 if ($env) {
   $env = "-{$env}";
 } else {
   $env = '';
 }
 
-$config = @include("{$basepath}/config/migration{$env}.php");
+$configPath = null;
+if (isset($opts['c'])) {
+    $configPath = $opts['c'];
+} elseif (isset($opts['config'])) {
+    $configPath = $opts['config'];
+} else {
+    $configPath = "{$basepath}/config/migration{$env}.php";
+}
+$config = @include($configPath);
 if (!$config) {
-  throw new RuntimeException("Migration config in {$basepath}/config/migration.php not found, please use {$currentpath}/config/migration.php-default to create one");
+  throw new RuntimeException("Migration config in {$configPath} not found, please use {$currentpath}/config/migration.php-default to create one");
 }
 
 $config['commandMap'] = array(
