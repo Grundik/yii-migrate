@@ -2,7 +2,7 @@
   "name": "grundik/yii-migrate",
   "description": "Simple package to add database migrations to project",
   "type": "library",
-  "license": "BSD",
+  "license": "0BSD",
   "keywords": [
     "yii",
     "database-migration"
