@@ -19,12 +19,10 @@ if  (!$loader) {
 }
 $loader->add('YiiMigrate\\', __DIR__);
 
-$opts = getopt('c:e:', ['config:', 'environment:']);
+$opts = getopt('', ['config:', 'environment:']);
 
 $env = null;
-if (isset($opts['e'])) {
-    $env = $opts['e'];
-} elseif (isset($opts['environment'])) {
+if (isset($opts['environment'])) {
     $env = $opts['environment'];
 } else {
     $env = getenv('YIIMIGRATE_ENV');
@@ -36,9 +34,7 @@ if ($env) {
 }
 
 $configPath = null;
-if (isset($opts['c'])) {
-    $configPath = $opts['c'];
-} elseif (isset($opts['config'])) {
+if (isset($opts['config'])) {
     $configPath = $opts['config'];
 } else {
     $configPath = "{$basepath}/config/migration{$env}.php";

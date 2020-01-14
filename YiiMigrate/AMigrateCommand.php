@@ -11,6 +11,8 @@ class AMigrateCommand extends \MigrateCommand
 
     public $moduleMigrationPaths = 'application.{module}.migrations';
     public $module = null;
+    public $config;
+    public $environment;
 
     protected function getTemplate()
     {
