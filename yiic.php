@@ -1,19 +1,31 @@
 <?php
 
 $currentpath = dirname(__FILE__);
-$basepath = $currentpath;
-/* @var $loader \Composer\Autoload\ClassLoader */
 $loader = null;
-$i = 4;
-while (!file_exists($basepath.'/vendor/autoload.php') && $i-->0) {
-  $basepath = $basepath.'/..';
+$basepath = null;
+
+if (getenv('BASE_PATH')) {
+    define('BASE_PATH', getenv('BASE_PATH'));
 }
-if ($i) {
-  $basepath = realpath($basepath);
+if (!defined('BASE_PATH')) {
+  $basepath = $currentpath;
+  /* @var $loader \Composer\Autoload\ClassLoader */
+  $loader = null;
+  $i = 4;
+  while (!file_exists($basepath.'/vendor/autoload.php') && $i-->0) {
+    $basepath = $basepath.'/..';
+  }
+  if ($i) {
+    $basepath = realpath($basepath);
+  }
+  define('BASE_PATH', $basepath);
+} else {
+  $basepath = BASE_PATH;
+}
+
+if ($basepath) {
   $loader = @include($basepath . '/vendor/autoload.php');
 }
-defined('BASE_PATH') || define('BASE_PATH', $basepath);
-
 if  (!$loader) {
   throw new RuntimeException('vendor/autoload.php could not be found. Did you run `php composer.phar install`?');
 }
